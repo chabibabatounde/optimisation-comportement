@@ -29,25 +29,59 @@ class AlgoGenetique:
         
         iterration = 0
         while iterration < self.maxIterration:
+            iterration =  iterration + 1
+
+
+
+            ''' #Methode de selection I        
+            self.population = sorted(self.population, key=lambda solution:solution.fitness)
+            nouvellePopulation = self.population[:self.taillePopulation/100*self.nombreCroisement]
+            for k in range(0,self.taillePopulation/100*self.nombreCroisement, 2):
+                parent1 = self.population[k]
+                parent2 = self.population[k+1]
+                parent1 = self.population[random.randint(0, len(nouvellePopulation)-1)]
+                parent2 = self.population[random.randint(0, len(nouvellePopulation)-1)]
+
+                enfant1, enfant2 = self.croiser(parent1, parent2)
+
+                enfant1.generation =  iterration+1
+                enfant2.generation =  iterration+1
+
+                nouvellePopulation.append(enfant1)
+                nouvellePopulation.append(enfant2)
+            self.population = nouvellePopulation
+            self.population = sorted(self.population, key=lambda solution:solution.fitness)'''
+            
+
+
+            #Methode de selection II      
             for croisement in range(0,self.taillePopulation/100*self.nombreCroisement):
                 #trie de la population
                 self.population = sorted(self.population, key=lambda solution:solution.fitness)
                 #Selection des parents
+                
                 parent1 = self.population[random.randint(0, self.taillePopulation-1)]
                 parent2 = self.population[random.randint(0, self.taillePopulation-1)]
                 #Croissement
                 enfant1, enfant2 = self.croiser(parent1, parent2)
+                enfant1.generation =  iterration + 1
+                enfant2.generation =  iterration + 1
                 self.population.append(enfant1)
                 self.population.append(enfant2)
-                
-            #Mutation
+                self.population.append(self.mutationReel(enfant1))
+                self.population.append(self.mutationReel(enfant2))
             #Normalisation
             self.population =  self.population[:self.taillePopulation]
-            iterration =  iterration + 1
+
+
             print("\tItérration "+str(iterration)+" :  Meilleur fitness = "+str(self.population[0].fitness))
             output.append({"iterration":iterration, "fitness":self.population[0].fitness})
+
+
+
         print "Optimisation Terminé"
         self.performance(output)
+
         return self.population[0]
 
     def loisNormale(self, parent1, parent2):
@@ -97,28 +131,6 @@ class AlgoGenetique:
         pltl.savefig('Courbe de performance.png', dpi=500)
     
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     def mutationReel(self, solution):
         adn = self.codageReel(solution)
         #definir le nombre de mutation
@@ -132,7 +144,7 @@ class AlgoGenetique:
 
         for point in listDesPoints:
             positif = random.randint(0,1)
-            valeur = random.uniform(0, 100)
+            valeur = random.uniform(0,10)
             if(positif==1):
                 adn[point] = adn[point]+valeur
             else:

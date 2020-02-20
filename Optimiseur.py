@@ -14,8 +14,8 @@ Graphique(solutionDeBase, "Comportement connu")
 probleme = Probleme("input.json")
 
 #Création d'une instance de l'algo d'optimisation
-#algorithme = AlgoGenetique(probleme= probleme, maxIterration=5, taillePopulation=1000, nombreCroisement=20)
-algorithme = Immunitaire(probleme= probleme, maxIterration=2500,  proportion=60, nbAnticorps=1000)
+algorithme = AlgoGenetique(probleme= probleme, maxIterration=2000, taillePopulation=10000, nombreCroisement=50)
+#algorithme = Immunitaire(probleme= probleme, maxIterration=2500,  proportion=60, nbAnticorps=1000)
 
 #Lancement du calcul
 resultats = algorithme.optimiser()
