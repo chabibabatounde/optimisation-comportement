@@ -32,28 +32,6 @@ class AlgoGenetique:
             iterration =  iterration + 1
 
 
-
-            ''' #Methode de selection I        
-            self.population = sorted(self.population, key=lambda solution:solution.fitness)
-            nouvellePopulation = self.population[:self.taillePopulation/100*self.nombreCroisement]
-            for k in range(0,self.taillePopulation/100*self.nombreCroisement, 2):
-                parent1 = self.population[k]
-                parent2 = self.population[k+1]
-                parent1 = self.population[random.randint(0, len(nouvellePopulation)-1)]
-                parent2 = self.population[random.randint(0, len(nouvellePopulation)-1)]
-
-                enfant1, enfant2 = self.croiser(parent1, parent2)
-
-                enfant1.generation =  iterration+1
-                enfant2.generation =  iterration+1
-
-                nouvellePopulation.append(enfant1)
-                nouvellePopulation.append(enfant2)
-            self.population = nouvellePopulation
-            self.population = sorted(self.population, key=lambda solution:solution.fitness)'''
-            
-
-
             #Methode de selection II      
             for croisement in range(0,self.taillePopulation/100*self.nombreCroisement):
                 #trie de la population

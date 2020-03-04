@@ -2,14 +2,18 @@
 import json
 import numpy as np
 
-class Comportement:
+class Errance:
     def __init__(self, vecteur1, vecteur2, vecteur3, vecteur4, vecteur5):
         self.vecteur1 = vecteur1
         self.vecteur2 = vecteur2
         self.vecteur3 = vecteur3
         self.vecteur4 = vecteur4
         self.vecteur5 = vecteur5
-    def action(self,agent,executionTime):
+
+    def exprimer(self,agent,executionTime):
+        return self.fonctionComportementale(agent,executionTime)
+
+    def fonctionComportementale(self,agent,executionTime):
         x = 0.0
         y = 0.0
         z = 0.0

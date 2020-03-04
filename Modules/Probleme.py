@@ -25,7 +25,7 @@ class Probleme:
 
     def evaluerIndividu(self, solution):
         simulateur = Simulateur()
-        resultat = simulateur.generate(solution)
+        resultat = simulateur.simuler(solution)
         solution.fitness = 0
         for i in range(0, len(self.dataSet)-1):
             genere =  resultat[i]

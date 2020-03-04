@@ -10,5 +10,5 @@ class Agent:
         self.energie = energie
 
     def run(self, executionTime):
-        return self.comportement.action(self, executionTime)
+        return self.comportement.exprimer(self, executionTime)
         
